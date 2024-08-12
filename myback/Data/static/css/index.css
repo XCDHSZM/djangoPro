@@ -369,75 +369,75 @@ body:before {
     align-items: center;
 }
 
-.main-blog__author {
-    display: flex;
-    align-items: center;
-    padding-bottom: 10px;
-}
-
-.main-blog__author.tips {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-}
-
-.main-blog__title {
-    font-size: 25px;
-    max-width: 12ch;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
-    margin-bottom: 30px;
-}
-
 .main-blog {
-    /* background-image: url("https://assets.codepen.io/3364143/skate-removebg-preview.png"); */
     background-size: 80%;
     background-position-x: 150px;
     background-color: #31abbd;
     display: flex;
-    flex-direction: column;
-    width: 65%;
-    padding: 30px;
+    /* flex-direction: column; */
+    padding: 10px;
     border-radius: 20px;
     align-self: stretch;
     overflow: hidden;
     position: relative;
-    transition: background 0.3s;
     background-repeat: no-repeat;
+    justify-content: center;
+    /* 垂直居中对齐 */
+    align-items: center;
+    /* 水平居中对齐 */
+    box-sizing: border-box;
+    /* 确保 padding 和 border 不影响高度计算 */
 }
 
-.main-blog+.main-blog {
-    margin-left: 20px;
-    width: 35%;
-    /* background-image: url(https://c0.anyrgb.com/images/1020/945/venice-beach-2018-outdoors-sport-men-jumping-desert-sunset-extreme-sports-one-person-action.jpg); */
-    /* background-color: unset; */
-    background-color: #31abbd;
-    background-position-x: 0;
-    background-size: 139%;
-    filter: saturate(1.4);
+.main-blog {
+    flex-grow: 1;
+    /* 默认每个元素都占1份宽度 */
 }
 
-.main-blog+.main-blog .author-img {
-    border-color: rgba(255, 255, 255, 0.75);
-    margin-top: 14px;
+.main-blog:first-child {
+    flex-grow: 8;
+    /* 第一个元素占10份宽度 */
 }
 
-.main-blog+.main-blog .author-img__wrapper svg {
-    border-color: #ffe6b2;
-    color: #e7bb7d;
+/* 文件拖拽CSS */
+.upload-area {
+    padding: 20px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    /* 使元素在容器中居中 */
 }
 
-.main-blog+.main-blog .author-detail {
-    margin-left: 0;
+.file-input {
+    display: none;
 }
+
+.upload-area:hover {
+    border-color: #999;
+}
+
+progress {
+    width: 100%;
+    margin-top: 10px;
+    height: 20px;
+    border-radius: 5px;
+    display: none;
+    /* 默认隐藏进度条 */
+}
+
+#file-names {
+    margin-top: 10px;
+    text-align: left;
+}
+
 
 @media screen and (max-width: 905px) {
 
     .main-blog,
-    .main-blog+.main-blog {
-        width: 50%;
-        padding: 30px;
-    }
 
     .main-blog {
         background-size: cover;
@@ -1232,4 +1232,69 @@ button.vjs-play-control.vjs-control.vjs-button {
 ::-webkit-scrollbar-thumb {
     background-color: rgba(21, 20, 26, 0.63);
     border-radius: 10px;
+}
+
+.main-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.main-blogs {
+    display: flex;
+    /* flex-direction: column; */
+    gap: 20px;
+}
+
+.main-blog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.upload-area {
+    padding: 20px;
+    border: 2px dashed #ccc;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.file-input {
+    display: none;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* 使按钮容器水平居中 */
+    gap: 10px;
+    /* 控制按钮之间的间距 */
+    width: 100%;
+    height: 100%;
+    /* 让按钮容器的高度跟随父容器 */
+}
+
+.view-button,
+.upload-button {
+    flex: 1;
+    /* 使按钮占据相同宽度 */
+    height: 100%;
+    /* 让按钮的高度跟随按钮容器 */
+    border: none;
+    border-radius: 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+.view-button:hover,
+.upload-button:hover {
+    background-color: #45a049;
 }
