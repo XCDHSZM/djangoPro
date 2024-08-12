@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/data/',include('Data.urls')),
+    path('data/',include('Data.urls')),
+    # 将根路径重定向到 /data/handle/
+    path('', RedirectView.as_view(url='/data/handle/', permanent=False)),
 ]
