@@ -1,7 +1,12 @@
+// 判断谁处于被点击的状态
 $(function () {
     $(".sidebar-link").click(function () {
         $(".sidebar-link").removeClass("is-active");
         $(this).addClass("is-active");
+    });
+    // 添加新的点击事件处理器
+    $("#toggleSidebar").click(function () {
+        $(".sidebar").toggleClass("collapse");
     });
 });
 
@@ -29,7 +34,7 @@ allVideos.forEach((v) => {
 });
 
 $(function () {
-    $(".logo, .logo-expand, .discover").on("click", function (e) {
+    $(".logo, .logo-expand, .uploads").on("click", function (e) {
         $(".main-container").removeClass("show");
         $(".main-container").scrollTop(0);
     });
