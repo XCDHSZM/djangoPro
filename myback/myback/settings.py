@@ -129,3 +129,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # 你的前端地址
 ]
+
+# 媒体文件
+# 定义媒体文件的根目录
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# 定义媒体文件的 URL 前缀
+MEDIA_URL = '/media/'

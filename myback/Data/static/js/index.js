@@ -52,6 +52,43 @@ const uploadArea = document.getElementById('upload-area');
 const fileInput = document.getElementById('file-upload');
 const progressBar = document.getElementById('upload-progress');
 const fileNamesContainer = document.getElementById('file-names');
+//上传按钮
+$(document).ready(function () {
+    // 监听上传按钮点击事件
+    $('.upload-button').on('click', function () {
+        uploadToServer($('#file-upload')[0].files);
+    });
+
+    // 处理文件上传到服务器的逻辑
+    function uploadToServer(files) {
+        const formData = new FormData();
+        $.each(files, function (i, file) {
+            formData.append('files', file);
+        });
+
+        $.ajax({
+            url: '/data/upload/',  // Django后端处理文件上传的URL
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.message) {
+                    alert('文件上传成功');
+                } else {
+                    alert('上传失败');
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('上传过程中发生错误:', textStatus, errorThrown);
+                alert('上传失败');
+            }
+        });
+    }
+});
+
+
+
 
 uploadArea.addEventListener('click', function () {
     fileInput.click();
@@ -123,5 +160,3 @@ function uploadFiles(files) {
         reader.readAsDataURL(file);
     });
 }
-
-
